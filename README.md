@@ -1,6 +1,6 @@
 # Optimization and Distributed Training for Image Classification
 
-This repository supports training ResNet18 on CIFAR-10 dataset along with 8 experimental evaluations of the training process. The experiments include:
+This repository supports training ResNet18 on CIFAR-10 dataset along with 8 experimental evaluations of the data loading and training process. The experiments include:
 - E1 **I/O Optimization**
 - E2 **Profiling**
 - E3 **Training on GPUs vs CPUs**
