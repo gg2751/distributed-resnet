@@ -24,7 +24,7 @@ For each of the above experiments, simply run the associated script. You can use
 ```sh
 sh scripts/E1.sh
 ```
-You can modify the parameters and run experiments directly using `eval.puy`
+You can modify the parameters and run experiments directly using `eval.py`
 ```sh
 python eval.py ----use_cuda=True --data_path='./data' --optimizer='sgd' --batch_size=64 --num_workers=2 --num_gpus=2 --get_bandwidth=True
 ```
