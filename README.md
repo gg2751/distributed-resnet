@@ -1,9 +1,9 @@
 # Optimization and Distributed Training for Image Classification
 
-This repository supports training ResNet18 on CIFAR-10 dataset along with 8 experimental evaluations of the data loading and training process. The experiments include:
-- E1 **I/O Optimization**
-- E2 **Profiling**
-- E3 **Training on GPUs vs CPUs**
+This repository supports training [ResNet18]([url](https://arxiv.org/abs/1512.03385)) on CIFAR-10 dataset along with 8 experimental evaluations of the data loading and training processes. The experimental evaluations include:
+- E1: **I/O Optimization**
+- E2: **Profiling**
+- E3: **Training on GPUs vs CPUs**
 - E4: **Experimenting with Different Optimizers**
 - E5: **Batch Size and Computational Efficiency**
 - E6: **Multi-GPU Speedup Measurement**
@@ -26,5 +26,6 @@ sh scripts/E1.sh
 ```
 You can modify the parameters and run experiments directly using `eval.py`
 ```sh
-python eval.py ----use_cuda=True --data_path='./data' --optimizer='sgd' --batch_size=64 --num_workers=2 --num_gpus=2 --get_bandwidth=True
+python eval.py --use_cuda=True --data_path='./data' --optimizer='sgd' \
+                --batch_size=64 --num_workers=2 --num_gpus=2 --get_bandwidth=True
 ```
