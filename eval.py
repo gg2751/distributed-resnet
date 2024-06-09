@@ -33,7 +33,7 @@ def main():
     transform_train = transforms.Compose([
         transforms.RandomCrop(32, padding=4),
         transforms.RandomHorizontalFlip(),
-        transforms.ToTensor(),
+        transforms.ToTensor(), 
         transforms.Normalize((0.4914, 0.4822, 0.4465), 
                             (0.2023, 0.1994, 0.2010)),
     ])
@@ -55,8 +55,9 @@ def main():
     
     print('==> Building model')
     net = ResNet18()
-    # net = ResNet18NoBN()
+    # net = ResNet18NoBN()     # Uncomment to use ResNet18 without Batch Normalization
     net = net.to(device)
+    # Handling multi-GPU training
     if device == 'cuda':
         total_batch_size = args.batch_size*args.num_gpus
         if args.num_gpus == 1:
@@ -96,11 +97,13 @@ def main():
         for batch_idx, (inputs, targets) in enumerate(trainloader):
             runningTime_start = time.perf_counter() 
 
+            # Measuring data loading time
             loadTime_start = time.perf_counter() 
             inputs, targets = inputs.to(device), targets.to(device)
             torch.cuda.synchronize()
             loadTime_end = time.perf_counter() 
 
+            # Measuring training time
             trainTime_start = time.perf_counter() 
             optimizer.zero_grad()
             outputs = net(inputs)
